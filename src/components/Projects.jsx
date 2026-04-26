@@ -16,9 +16,9 @@ const projectsData = [
   },
   {
     id: 2,
-    title: 'Face-to-Face Video Chat',
+    title: 'Face-to-Face Video Chat (Team Project)',
     image: 'https://images.unsplash.com/photo-1616469829581-73993eb86b02?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    description: 'A real-time video calling application similar to Omegle, enabling random face-to-face interactions via WebRTC.',
+    description: 'A collaborative real-time video calling application developed as a team project with a friend, enabling random face-to-face interactions via WebRTC.',
     tags: ['WebRTC', 'Socket.io', 'React', 'Nodejs'],
     link: null,
     github: 'https://github.com/muhammd-hafeef-th'
