@@ -19,7 +19,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    console.log('hiii');
     if (formData.name.trim() === '' || /\d/.test(formData.name)) {
       alert("Please enter a valid name without numbers.");
       return;
