@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, MessageCircle } from 'lucide-react';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
@@ -19,7 +20,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validation
     if (formData.name.trim() === '' || /\d/.test(formData.name)) {
       alert("Please enter a valid name without numbers.");
       return;
@@ -51,7 +51,6 @@ const Contact = () => {
       setStatus('error');
     }
     
-    // Reset status after 5 seconds
     setTimeout(() => {
       if(status === 'success' || status === 'error') setStatus('');
     }, 5000);
@@ -60,122 +59,152 @@ const Contact = () => {
   return (
     <section id="contact" className="section contact">
       <div className="section-header">
-        <h2 className="section-title">Contact Me</h2>
-        <p className="section-subtitle">Feel free to reach out—I'd love to hear from you!</p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="section-title">Get In Touch</h2>
+          <p className="section-subtitle">Feel free to reach out—I'd love to hear from you!</p>
+        </motion.div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="contact-container">
-          <div className="contact-info">
-            <motion.div className="info-card glass-card" whileHover={{ y: -5 }}>
-              <div className="info-icon-wrapper">
-                <MapPin size={24} />
-              </div>
-              <div>
-                <h3>Address</h3>
-                <p>Irikkur, Kannur, Kerala-670593</p>
-              </div>
-            </motion.div>
+      <div className="contact-split">
+        <motion.div
+          className="contact-left"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="contact-intro">
+            <div className="intro-icon">
+              <MessageCircle size={48} />
+            </div>
+            <h3>Let's Connect</h3>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+          </div>
 
-            <motion.div className="info-card glass-card" whileHover={{ y: -5 }}>
-              <div className="info-icon-wrapper">
-                <Phone size={24} />
+          <div className="contact-details">
+            <div className="contact-item">
+              <div className="item-icon">
+                <Mail size={20} />
               </div>
-              <div>
-                <h3>Call or Whatsapp</h3>
-                <p>+91 8089399521</p>
+              <div className="item-content">
+                <span className="item-label">Email</span>
+                <a href="mailto:thhafeef2@gmail.com" className="item-value">thhafeef2@gmail.com</a>
               </div>
-            </motion.div>
-
-            <motion.div className="info-card glass-card" whileHover={{ y: -5 }}>
-              <div className="info-icon-wrapper">
-                <Mail size={24} />
+            </div>
+            <div className="contact-item">
+              <div className="item-icon">
+                <Phone size={20} />
               </div>
-              <div>
-                <h3>Email</h3>
-                <p>thhafeef2@gmail.com</p>
+              <div className="item-content">
+                <span className="item-label">Phone</span>
+                <a href="tel:+918089399521" className="item-value">+91 8089399521</a>
               </div>
-            </motion.div>
-
-            <div className="map-container glass-card">
-              <iframe 
-                title="map" 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15611.350658229216!2d75.55621079999999!3d11.985732300000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4373ef7058ff7%3A0x12cab345adc57c32!2sIrikkur%2C%20Kerala%20670593!5e0!3m2!1sen!2sin!4v1736691526820!5m2!1sen!2sin" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen="" 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+            </div>
+            <div className="contact-item">
+              <div className="item-icon">
+                <MapPin size={20} />
+              </div>
+              <div className="item-content">
+                <span className="item-label">Location</span>
+                <span className="item-value">Irikkur, Kannur, Kerala</span>
+              </div>
             </div>
           </div>
 
-          <div className="contact-form-wrapper glass-card">
-            <form onSubmit={handleSubmit} className="contact-form">
-              <div className="form-row">
-                <div className="form-group">
-                  <input 
-                    type="text" 
-                    name="name" 
-                    placeholder="Your Name" 
-                    required 
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Your Email" 
-                    required 
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-              <div className="form-group">
-                <input 
-                  type="text" 
-                  name="subject" 
-                  placeholder="Subject" 
-                  required 
-                  value={formData.subject}
+          <div className="contact-social-links">
+            <a href="https://github.com/Muhammd-hafeef-th" target="_blank" rel="noopener noreferrer" className="social-btn">
+              <FaGithub size={20} />
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/hafeef-th-860487315" target="_blank" rel="noopener noreferrer" className="social-btn">
+              <FaLinkedin size={20} />
+              LinkedIn
+            </a>
+            <a href="https://www.instagram.com/hafeeff?igsh=MTRobHIwdHZwb3FjYQ==" target="_blank" rel="noopener noreferrer" className="social-btn">
+              <FaInstagram size={20} />
+              Instagram
+            </a>
+          </div>
+        </motion.div>
+
+        <motion.form
+          className="contact-right"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          onSubmit={handleSubmit}
+        >
+          <div className="form-header">
+            <h4>Send a Message</h4>
+          </div>
+          <div className="form-body">
+            <div className="form-row">
+              <div className="form-field">
+                <label>Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="John Doe"
+                  required
+                  value={formData.name}
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group">
-                <textarea 
-                  name="message" 
-                  rows="6" 
-                  placeholder="Message" 
+              <div className="form-field">
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="john@example.com"
                   required
-                  value={formData.message}
+                  value={formData.email}
                   onChange={handleChange}
-                ></textarea>
+                />
               </div>
-
-              {status === 'loading' && <div className="status loading">Sending message...</div>}
-              {status === 'success' && <div className="status success">Your message has been sent. Thank you!</div>}
-              {status === 'error' && <div className="status error">Error sending message. Please try again.</div>}
-
-              <button type="submit" className="btn-submit" disabled={status === 'loading'}>
-                {status === 'loading' ? 'Sending...' : (
-                  <>
-                    Send Message <Send size={18} />
-                  </>
-                )}
-              </button>
-            </form>
+            </div>
+            <div className="form-field">
+              <label>Subject</label>
+              <input
+                type="text"
+                name="subject"
+                placeholder="Project Inquiry"
+                required
+                value={formData.subject}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-field">
+              <label>Message</label>
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Tell me about your project..."
+                required
+                value={formData.message}
+                onChange={handleChange}
+              ></textarea>
+            </div>
           </div>
-        </div>
-      </motion.div>
+
+          {status === 'loading' && <div className="status-msg loading">Sending...</div>}
+          {status === 'success' && <div className="status-msg success">Message sent successfully!</div>}
+          {status === 'error' && <div className="status-msg error">Error sending message</div>}
+
+          <button type="submit" className="send-btn" disabled={status === 'loading'}>
+            {status === 'loading' ? 'Sending...' : (
+              <>
+                Send Message <Send size={18} />
+              </>
+            )}
+          </button>
+        </motion.form>
+      </div>
     </section>
   );
 };

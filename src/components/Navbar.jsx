@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,9 +29,13 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <nav className="nav-menu">
           <a href="#about" className="nav-link">About</a>
+          <a href="#experience" className="nav-link">Experience</a>
           <a href="#skills" className="nav-link">Skills</a>
           <a href="#projects" className="nav-link">Projects</a>
           <a href="#contact" className="nav-link btn-nav">Contact</a>
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
         </nav>
 
         {/* Mobile Toggle */}
@@ -41,6 +47,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         <a href="#about" className="mobile-link" onClick={closeMenu}>About</a>
+        <a href="#experience" className="mobile-link" onClick={closeMenu}>Experience</a>
         <a href="#skills" className="mobile-link" onClick={closeMenu}>Skills</a>
         <a href="#projects" className="mobile-link" onClick={closeMenu}>Projects</a>
         <a href="#contact" className="mobile-link" onClick={closeMenu}>Contact</a>
