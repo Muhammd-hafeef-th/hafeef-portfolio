@@ -33,15 +33,18 @@ const Navbar = () => {
           <a href="#skills" className="nav-link">Skills</a>
           <a href="#projects" className="nav-link">Projects</a>
           <a href="#contact" className="nav-link btn-nav">Contact</a>
+        </nav>
+
+        <div className="nav-actions">
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-        </nav>
 
-        {/* Mobile Toggle */}
-        <button className="mobile-toggle" onClick={toggleMenu} aria-label="Toggle menu">
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Mobile Toggle */}
+          <button className="mobile-toggle" onClick={toggleMenu} aria-label="Toggle menu">
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
