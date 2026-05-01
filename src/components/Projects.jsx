@@ -49,16 +49,7 @@ const projectsData = [
   tags: ['React', 'Vite', 'Tailwind CSS'],
   link: 'https://aviloavil.com',
   github: null
- },
-  {
-    id: 6,
-    title: '7UP Clone',
-    image: '/assets/img/portfolio/7UP-Portfolio.jpg',
-    description: 'A static web application designed to replicate the appearance of the original 7UP website.',
-    tags: ['HTML5', 'CSS3', 'Responsive','Tailwind Css'],
-    link: 'https://muhammd-hafeef-th.github.io/Seven-up/',
-    github: null
-  }
+ }
   
 ];
 
