@@ -14,7 +14,7 @@ const skillsData = [
   { name: 'HTML5/CSS3', category: 'Frontend', icon: '🌐' },
   // Backend
   { name: 'Node.js', category: 'Backend', icon: '🟢' },
-  {name:'fastapi', category:'Backend', icon:'⚡'},
+  {name:'Fastapi', category:'Backend', icon:'⚡'},
   { name: 'Express', category: 'Backend', icon: '🚂' },
   { name: 'REST APIs', category: 'Backend', icon: '🔗' },
   { name: 'Socket.io', category: 'Backend', icon: '🔌' },
