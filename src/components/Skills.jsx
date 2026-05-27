@@ -6,6 +6,7 @@ import './Skills.css';
 const skillsData = [
   // Frontend
   { name: 'React', category: 'Frontend', icon: '⚛️' },
+  { name: 'Next.js', category: 'Frontend', icon: '⛳' },
   { name: 'TypeScript', category: 'Frontend', icon: '📘' },
   { name: 'JavaScript', category: 'Frontend', icon: '🟡' },
   { name: 'Tailwind CSS', category: 'Frontend', icon: '🎨' },
@@ -13,6 +14,7 @@ const skillsData = [
   { name: 'HTML5/CSS3', category: 'Frontend', icon: '🌐' },
   // Backend
   { name: 'Node.js', category: 'Backend', icon: '🟢' },
+  {name:'fastapi', category:'Backend', icon:'⚡'},
   { name: 'Express', category: 'Backend', icon: '🚂' },
   { name: 'REST APIs', category: 'Backend', icon: '🔗' },
   { name: 'Socket.io', category: 'Backend', icon: '🔌' },

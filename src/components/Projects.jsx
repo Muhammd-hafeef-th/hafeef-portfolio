@@ -24,23 +24,23 @@ const projectsData = [
   github: 'https://github.com/Muhammd-hafeef-th/Us.git'
 },
   {
-    id: 3,
-    title: 'Admin Dashboard Pro',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    description: 'A comprehensive admin dashboard with complex state management, data visualization, and user management.',
-    tags: ['React', 'Recharts', 'Tailwind','Js','MongoDB','Node.js'],
-    link: null,
-    github: 'https://github.com/muhammd-hafeef-th'
-  },
-  {
-    id: 4,
-    title: 'MERN Task Manager',
-    image: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    description: 'A productivity application for managing daily tasks with drag-and-drop functionality and user authentication.',
-    tags: ['MERN', 'Redux', 'JWT'],
-    link: null,
-    github: 'https://github.com/muhammd-hafeef-th'
-  },
+  id: 3,
+  title: 'Newstar Events Website',
+  image: '/assets/img/portfolio/newstarInsta.jpg',
+  description: 'A premium event management and showcase platform built entirely with Next.js for both frontend and backend development. The website delivers high performance, SEO optimization, responsive layouts, smooth animations, and a modern user experience for showcasing events, services, and brand identity.',
+  tags: ['Next.js', 'React', 'Tailwind CSS', 'JavaScript', 'MongoDB', 'Full Stack', 'SEO', 'Responsive Design', 'REST API'],
+  link: 'https://newstarevents.com/',
+  github: 'https://github.com/muhammd-hafeef-th'
+},
+{
+  id: 4,
+  title: 'Roya Global Tourism Website',
+  image: '/assets/img/portfolio/royaglobal.png',
+  description: 'A professional tourism and travel booking website designed to provide users with a seamless experience for exploring travel packages, destinations, and tour services. Built with a clean modern interface, responsive layouts, and optimized performance for all devices.',
+  tags: ['React', 'MERN Stack', 'Tailwind CSS', 'MongoDB', 'Express.js', 'Node.js', 'Responsive UI', 'Vercel'],
+  link: 'https://roya-toursim.vercel.app/',
+  github: 'https://github.com/muhammd-hafeef-th'
+},
   {
   id: 5,
   title: 'Avilo Brand Website',
