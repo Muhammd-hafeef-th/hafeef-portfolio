@@ -3,100 +3,114 @@ import { motion } from 'framer-motion';
 import { Code2, Server, Wrench } from 'lucide-react';
 import './Skills.css';
 
-const skillsData = [
-  // Frontend
-  { name: 'React', category: 'Frontend', icon: '⚛️' },
-  { name: 'Next.js', category: 'Frontend', icon: '⛳' },
-  { name: 'TypeScript', category: 'Frontend', icon: '📘' },
-  { name: 'JavaScript', category: 'Frontend', icon: '🟡' },
-  { name: 'Tailwind CSS', category: 'Frontend', icon: '🎨' },
-  { name: 'Framer Motion', category: 'Frontend', icon: '🎭' },
-  { name: 'HTML5/CSS3', category: 'Frontend', icon: '🌐' },
-  // Backend
-  { name: 'Node.js', category: 'Backend', icon: '🟢' },
-  {name:'Fastapi', category:'Backend', icon:'⚡'},
-  { name: 'Express', category: 'Backend', icon: '🚂' },
-  { name: 'REST APIs', category: 'Backend', icon: '🔗' },
-  { name: 'Socket.io', category: 'Backend', icon: '🔌' },
-  { name: 'MongoDB', category: 'Backend', icon: '🍃' },
-  { name: 'PostgreSQL', category: 'Backend', icon: '🐘' },
-  // Tools & Infra
-  { name: 'Git', category: 'Tools & Infra', icon: '📦' },
-  { name: 'Docker', category: 'Tools & Infra', icon: '🐳' },
-  { name: 'Vercel', category: 'Tools & Infra', icon: '▲' },
-  { name: 'Postman', category: 'Tools & Infra', icon: '📮' },
-  { name: 'VS Code', category: 'Tools & Infra', icon: '💻' },
-  { name: 'Figma', category: 'Tools & Infra', icon: '🎨' },
+const allSkills = [
+  { n: 'React', e: '⚛️' }, { n: 'Next.js', e: '⛳' }, { n: 'TypeScript', e: '📘' },
+  { n: 'JavaScript', e: '🟡' }, { n: 'Tailwind CSS', e: '🎨' }, { n: 'Framer Motion', e: '🎭' },
+  { n: 'HTML5 / CSS3', e: '🌐' }, { n: 'Node.js', e: '🟢' }, { n: 'FastAPI', e: '⚡' },
+  { n: 'Express', e: '🚂' }, { n: 'MongoDB', e: '🍃' }, { n: 'PostgreSQL', e: '🐘' },
+  { n: 'Socket.io', e: '🔌' }, { n: 'Git', e: '📦' }, { n: 'Docker', e: '🐳' },
+  { n: 'Vercel', e: '▲' }, { n: 'Figma', e: '🎨' }, { n: 'Postman', e: '📮' },
 ];
 
-const categoryConfig = {
-  'Frontend': { icon: <Code2 />, gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
-  'Backend': { icon: <Server />, gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
-  'Tools & Infra': { icon: <Wrench />, gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' },
-};
+// duplicate for infinite marquee
+const marqueeItems = [...allSkills, ...allSkills];
 
-const Skills = () => {
-  const categories = ['Frontend', 'Backend', 'Tools & Infra'];
-  
-  return (
-    <section id="skills" className="section skills">
-      <div className="section-header">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="section-title">Technical Skills</h2>
-          <p className="section-subtitle">Technologies and tools I work with to bring ideas to life.</p>
-        </motion.div>
-      </div>
-      
-      <div className="skills-container">
-        {categories.map((category, catIndex) => (
+const categories = [
+  {
+    id: 'frontend', cls: 'cat-frontend', icon: Code2, label: 'Frontend',
+    skills: [
+      { n: 'React', e: '⚛️' }, { n: 'Next.js', e: '⛳' }, { n: 'TypeScript', e: '📘' },
+      { n: 'JavaScript', e: '🟡' }, { n: 'Tailwind CSS', e: '🎨' }, { n: 'Framer Motion', e: '🎭' },
+      { n: 'HTML5 / CSS3', e: '🌐' },
+    ],
+  },
+  {
+    id: 'backend', cls: 'cat-backend', icon: Server, label: 'Backend',
+    skills: [
+      { n: 'Node.js', e: '🟢' }, { n: 'FastAPI', e: '⚡' }, { n: 'Express', e: '🚂' },
+      { n: 'REST APIs', e: '🔗' }, { n: 'Socket.io', e: '🔌' }, { n: 'MongoDB', e: '🍃' },
+      { n: 'PostgreSQL', e: '🐘' },
+    ],
+  },
+  {
+    id: 'tools', cls: 'cat-tools', icon: Wrench, label: 'Tools & Infra',
+    skills: [
+      { n: 'Git', e: '📦' }, { n: 'Docker', e: '🐳' }, { n: 'Vercel', e: '▲' },
+      { n: 'Postman', e: '📮' }, { n: 'Figma', e: '🎨' }, { n: 'VS Code', e: '💻' },
+    ],
+  },
+];
+
+const Skills = () => (
+  <section id="skills" className="section skills">
+    <div className="container">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        style={{ marginBottom: '2rem' }}
+      >
+        <span className="section-label">My Skills</span>
+        <h2 className="section-title">Technical <span className="o">Arsenal</span></h2>
+        <p className="section-sub">Technologies and tools I wield to build bold, production-ready products.</p>
+      </motion.div>
+
+      {/* Marquee strip */}
+      <motion.div
+        className="skills-marquee-wrap"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="skills-marquee">
+          {marqueeItems.map((s, i) => (
+            <div key={i} className="skill-badge">
+              <span className="sb-emoji">{s.e}</span>
+              {s.n}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Categorized */}
+      <div className="skills-cats">
+        {categories.map((cat, ci) => (
           <motion.div
-            key={category}
-            className="skill-category-wrapper"
-            initial={{ opacity: 0, y: 30 }}
+            key={cat.id}
+            className={cat.cls}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: catIndex * 0.1, duration: 0.5 }}
+            transition={{ duration: 0.65, delay: ci * 0.12, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="skill-category-header">
-              <div 
-                className="category-icon-bg"
-                style={{ background: categoryConfig[category].gradient }}
-              >
-                {categoryConfig[category].icon}
-              </div>
-              <h3 className="category-title">{category}</h3>
+            <div className="skill-cat-header">
+              <div className="cat-icon"><cat.icon size={17} /></div>
+              <span className="cat-title">{cat.label}</span>
+              <div className="cat-sep" />
             </div>
-            
-            <div className="skills-grid">
-              {skillsData
-                .filter(skill => skill.category === category)
-                .map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    className="skill-card"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.03, duration: 0.3 }}
-                    whileHover={{ y: -3 }}
-                  >
-                    <div className="skill-card-content">
-                      <span className="skill-icon">{skill.icon}</span>
-                      <span className="skill-name">{skill.name}</span>
-                    </div>
-                  </motion.div>
-                ))}
+            <div className="skill-pills">
+              {cat.skills.map((s, si) => (
+                <motion.div
+                  key={s.n}
+                  className="skill-pill"
+                  initial={{ opacity: 0, scale: 0.88 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: ci * 0.08 + si * 0.04 }}
+                  whileHover={{ y: -3, scale: 1.05 }}
+                >
+                  <span className="sp-emoji">{s.e}</span>
+                  {s.n}
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Skills;

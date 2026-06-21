@@ -4,121 +4,121 @@ import { ExternalLink, ArrowRight } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import './Projects.css';
 
-const projectsData = [
+const projects = [
   {
     id: 1,
     title: 'Lybros E-Commerce',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    description: 'A fully functional e-commerce platform built with modern web technologies, offering a seamless shopping experience.',
-    tags: ['EJS', 'Node.js', 'MongoDB','Js','Tailwind Css'],
+    sub: 'A Toronto based e-commerce platform',
+    img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
+    tags: ['EJS', 'Node.js', 'MongoDB', 'Tailwind'],
     link: 'https://www.lb-lybros.shop/',
-    github: null
+    github: null,
   },
-{
-  id: 2,
-  title: 'Face-to-Face Video Chat',
-  image: 'https://images.unsplash.com/photo-1616469829581-73993eb86b02?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  description: 'A collaborative real-time video calling application built with WebRTC, enabling random face-to-face interactions. Developed as a team project with a focus on real-time communication, performance, and seamless user experience.',
-  tags: ['WebRTC', 'Socket.io', 'React', 'JavaScript', 'Tailwind CSS', 'MongoDB', 'Node.js'],
-  link: null,
-  github: 'https://github.com/Muhammd-hafeef-th/Us.git'
-},
   {
-  id: 3,
-  title: 'Newstar Events Website',
-  image: '/assets/img/portfolio/newstarInsta.jpg',
-  description: 'A premium event management and showcase platform built entirely with Next.js for both frontend and backend development. The website delivers high performance, SEO optimization, responsive layouts, smooth animations, and a modern user experience for showcasing events, services, and brand identity.',
-  tags: ['Next.js', 'React', 'Tailwind CSS', 'JavaScript', 'MongoDB', 'Full Stack', 'SEO', 'Responsive Design', 'REST API'],
-  link: 'https://newstarevents.com/',
-  github: 'https://github.com/muhammd-hafeef-th'
-},
-{
-  id: 4,
-  title: 'Roya Global Tourism Website',
-  image: '/assets/img/portfolio/royaglobal.png',
-  description: 'A professional tourism and travel booking website designed to provide users with a seamless experience for exploring travel packages, destinations, and tour services. Built with a clean modern interface, responsive layouts, and optimized performance for all devices.',
-  tags: ['React', 'MERN Stack', 'Tailwind CSS', 'MongoDB', 'Express.js', 'Node.js', 'Responsive UI', 'Vercel'],
-  link: 'https://roya-toursim.vercel.app/',
-  github: 'https://github.com/muhammd-hafeef-th'
-},
+    id: 2,
+    title: 'Face-to-Face Video Chat',
+    sub: 'Real-time WebRTC video calling app',
+    img: 'https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&w=800&q=80',
+    tags: ['WebRTC', 'Socket.io', 'React', 'Node.js'],
+    link: null,
+    github: 'https://github.com/Muhammd-hafeef-th/Us.git',
+  },
   {
-  id: 5,
-  title: 'Avilo Brand Website',
-  image: '/assets/img/portfolio/avilo.png',
-  description: 'A premium brand website for Avilo Banana Avil Milk, designed with modern UI, smooth animations, and responsive layout to deliver a rich digital experience.',
-  tags: ['React', 'Vite', 'Tailwind CSS'],
-  link: 'https://aviloavil.com',
-  github: null
- }
-  
+    id: 3,
+    title: 'Newstar Events',
+    sub: 'Premium event management platform',
+    img: '/assets/img/portfolio/newstarInsta.jpg',
+    tags: ['Next.js', 'MongoDB', 'REST API', 'SEO'],
+    link: 'https://newstarevents.com/',
+    github: null,
+  },
+  {
+    id: 4,
+    title: 'Roya Global Tourism',
+    sub: 'Professional travel booking website',
+    img: '/assets/img/portfolio/royaglobal.png',
+    tags: ['React', 'Node.js', 'MongoDB', 'Vercel'],
+    link: 'https://roya-toursim.vercel.app/',
+    github: null,
+  },
+  {
+    id: 5,
+    title: 'Avilo Brand Website',
+    sub: 'Premium brand website for Avilo',
+    img: '/assets/img/portfolio/avilo.png',
+    tags: ['React', 'Vite', 'Tailwind CSS'],
+    link: 'https://aviloavil.com',
+    github: null,
+  },
 ];
 
-const Projects = () => {
-  return (
-    <section id="projects" className="section projects">
-      <div className="section-header">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="section-title">Featured Projects</h2>
-          <p className="section-subtitle">Some of my recent work and personal projects.</p>
-        </motion.div>
-      </div>
+const Projects = () => (
+  <section id="projects" className="section projects">
+    <div className="container">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        style={{ marginBottom: '2.5rem' }}
+      >
+        <span className="section-label">Portfolio</span>
+        <h2 className="section-title">Featured <span className="o">Works</span></h2>
+        <p className="section-sub">Real-world products I've designed and engineered — from idea to live deployment.</p>
+      </motion.div>
 
-      <div className="projects-list">
-        {projectsData.map((project, index) => (
+      <div className="projects-row">
+        {projects.map((p, i) => (
           <motion.div
-            key={project.id}
-            className="project-row"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            key={p.id}
+            className="proj-card"
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
+            transition={{ duration: 0.65, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="project-index">
-              <span>0{index + 1}</span>
-            </div>
-            <div className="project-content">
-              <div className="project-image">
-                <img src={project.image} alt={project.title} />
-              </div>
-              <div className="project-info">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <div className="project-meta">
-                  <div className="project-tags">
-                    {project.tags.map((tag, i) => (
-                      <span key={i} className="tag">{tag}</span>
-                    ))}
-                  </div>
-                  <div className="project-links">
-                    {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-                        <ExternalLink size={16} />
-                        Live
-                      </a>
-                    )}
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                        <FaGithub size={16} />
-                        Code
-                      </a>
-                    )}
-                  </div>
-                </div>
+            {/* Image */}
+            <div className="proj-img-wrap">
+              <img src={p.img} alt={p.title} className="proj-img" />
+              <div className="proj-overlay" />
+              <div className="proj-num">0{i + 1}</div>
+              <div className="proj-actions">
+                {p.link && (
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="proj-action-btn" aria-label="Live site">
+                    <ExternalLink size={13} />
+                  </a>
+                )}
+                {p.github && (
+                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="proj-action-btn" aria-label="GitHub">
+                    <FaGithub size={13} />
+                  </a>
+                )}
               </div>
             </div>
-            <div className="project-arrow">
-              <ArrowRight size={24} />
+
+            {/* Body */}
+            <div className="proj-body">
+              <h3 className="proj-title">{p.title}</h3>
+              <p className="proj-sub">{p.sub}</p>
+              <div className="proj-tags">
+                {p.tags.map(t => <span key={t} className="proj-tag">{t}</span>)}
+              </div>
+              {(p.link || p.github) && (
+                <a
+                  href={p.link || p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="proj-view"
+                >
+                  View live <ArrowRight size={12} />
+                </a>
+              )}
             </div>
           </motion.div>
         ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Projects;

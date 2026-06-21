@@ -1,128 +1,159 @@
 import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import { ArrowRight, Zap } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import './Hero.css';
+
+/* ── 3D Cube helper ─────────────────────────────────────── */
+const Cube = ({ cls = '', sizeCls = '', delayCls = 'd1' }) => (
+  <div className={`cube-deco ${sizeCls} ${delayCls} ${cls}`}>
+    <div className="face front" />
+    <div className="face back" />
+    <div className="face left" />
+    <div className="face right" />
+    <div className="face top" />
+    <div className="face bottom" />
+  </div>
+);
+
+/* ── Animation variants ─────────────────────────────────── */
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 36 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
+});
 
 const Hero = () => {
   return (
-    <section id="hero" className="hero section">
-      <div className="hero-split">
-        <motion.div 
-          className="hero-left"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+    <section id="hero" className="hero">
+      <div className="container">
+        <motion.div
+          className="hero-frame"
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.div
-            className="hero-tagline"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <span className="tagline-dot"></span>
-            MERN Stack Developer
-          </motion.div>
+          {/* Decorative 3D cubes */}
+          <Cube cls="hero-cube-1" sizeCls="cube-lg" delayCls="cube-d1" />
+          <Cube cls="hero-cube-2" sizeCls="cube-sm" delayCls="cube-d2" />
+          <Cube cls="hero-cube-3" sizeCls="cube-sm" delayCls="cube-d3" />
 
-          <motion.h1 
-            className="hero-title"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            Muhammad<br />
-            <span className="highlight">Hafeef T H</span>
-          </motion.h1>
-
-          <motion.div
-            className="hero-typing"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            <TypeAnimation
-              sequence={[
-                'Building modern web applications',
-                2000,
-                'Creating seamless user experiences',
-                2000,
-                'Developing scalable solutions',
-                2000,
-              ]}
-              wrapper="span"
-              speed={50}
-              className="typing-text"
-              repeat={Infinity}
-            />
-          </motion.div>
-
-          <motion.p
-            className="hero-desc"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-          >
-            Specialized in crafting visually stunning and highly interactive web solutions with modern aesthetics and performance optimization.
-          </motion.p>
-
-          <motion.div
-            className="hero-buttons"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-          >
-            <a href="#projects" className="btn-primary">
-              View Projects
-              <ArrowRight size={18} />
-            </a>
-            <a href="#contact" className="btn-secondary">
-              Contact Me
-            </a>
-          </motion.div>
-
-          <motion.div
-            className="hero-social"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
-            <a href="https://github.com/Muhammd-hafeef-th" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <FaGithub size={20} />
-            </a>
-            <a href="https://www.linkedin.com/in/hafeef-th-860487315" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <FaLinkedin size={20} />
-            </a>
-            <a href="https://www.instagram.com/hafeeff?igsh=MTRobHIwdHZwb3FjYQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <FaInstagram size={20} />
-            </a>
-          </motion.div>
-        </motion.div>
-
-        <motion.div 
-          className="hero-right"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-        >
-          <div className="hero-visual">
-            <div className="visual-circle circle-1"></div>
-            <div className="visual-circle circle-2"></div>
-            <div className="visual-circle circle-3"></div>
-            <div className="hero-image">
-              <img src="/ProfileImages/WSFG8803.JPG" alt="Hafeef T H" />
-            </div>
-            {/* Freelance Badge */}
-            <motion.div 
-              className="freelance-badge"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
+          {/* Left Social Bar */}
+          <div className="hero-social-bar">
+            <motion.a
+              href="https://www.instagram.com/hafeeff?igsh=MTRobHIwdHZwb3FjYQ=="
+              target="_blank" rel="noopener noreferrer"
+              className="hero-social-icon"
+              {...fadeUp(0.6)} whileHover={{ scale: 1.15 }} aria-label="Instagram"
             >
-              <div className="badge-pulse"></div>
-              <Zap size={14} className="badge-icon" />
-              <span>Available for Freelance</span>
+              <FaInstagram size={15} />
+            </motion.a>
+            <motion.a
+              href="https://github.com/Muhammd-hafeef-th"
+              target="_blank" rel="noopener noreferrer"
+              className="hero-social-icon"
+              {...fadeUp(0.7)} whileHover={{ scale: 1.15 }} aria-label="GitHub"
+            >
+              <FaGithub size={15} />
+            </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/hafeef-th-860487315"
+              target="_blank" rel="noopener noreferrer"
+              className="hero-social-icon"
+              {...fadeUp(0.8)} whileHover={{ scale: 1.15 }} aria-label="LinkedIn"
+            >
+              <FaLinkedin size={15} />
+            </motion.a>
+          </div>
+
+          {/* Main Content */}
+          <div className="hero-content">
+            <motion.div className="hero-hello" {...fadeUp(0.2)}>
+              <span className="hello-line" />
+              Hello
             </motion.div>
+
+            <motion.h1 className="hero-title" {...fadeUp(0.3)}>
+              I'm{' '}
+              <span className="name-highlight">
+                Muhammad<br />Hafeef T H
+              </span>
+            </motion.h1>
+
+            <motion.div className="hero-typing" {...fadeUp(0.4)}>
+              <TypeAnimation
+                sequence={[
+                  'MERN Stack Developer', 2200,
+                  'Full-Stack Engineer', 2200,
+                  'UI/UX Enthusiast', 2200,
+                  'Freelance Developer', 2200,
+                ]}
+                wrapper="span"
+                speed={52}
+                deletionSpeed={65}
+                repeat={Infinity}
+              />
+              <span className="typing-cursor" />
+            </motion.div>
+
+            <motion.p className="hero-desc" {...fadeUp(0.5)}>
+              A full stack developer based in Kannur, Kerala — building modern, scalable web applications with clean design and powerful backends.
+            </motion.p>
+
+            <motion.div className="hero-btns" {...fadeUp(0.6)}>
+              <a href="#projects" className="btn btn-orange">
+                View My Work <ArrowRight size={15} />
+              </a>
+              <a href="#contact" className="btn btn-outline">
+                Contact Me
+              </a>
+            </motion.div>
+
+            <motion.div className="hero-stats" {...fadeUp(0.7)}>
+              <div>
+                <div className="stat-num">10+</div>
+                <div className="stat-lbl">Projects Delivered</div>
+              </div>
+              <div className="stat-divider" />
+              <div>
+                <div className="stat-num">1+</div>
+                <div className="stat-lbl">Years Experience</div>
+              </div>
+              <div className="stat-divider" />
+              <div>
+                <div className="stat-num">5+</div>
+                <div className="stat-lbl">Live Products</div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Visual */}
+          <motion.div
+            className="hero-visual"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="hero-img-ring">
+              <div className="hero-img-wrap">
+                <img
+                  src="/ProfileImages/WSFG8803.JPG"
+                  alt="Muhammad Hafeef T H"
+                  className="hero-img"
+                />
+              </div>
+              <div className="hero-badge">
+                <span className="badge-dot" />
+                Available for Freelance
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Scroll cue */}
+          <div className="scroll-cue">
+            <div className="scroll-line" />
+            scroll down
           </div>
         </motion.div>
       </div>
