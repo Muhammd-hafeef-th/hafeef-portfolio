@@ -19,29 +19,39 @@ const Navbar = () => {
   const [active, setActive] = useState('');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+
+      // Active section logic
+      const sections = document.querySelectorAll('section[id]');
+      let current = '';
+      
+      sections.forEach(s => {
+        const rect = s.getBoundingClientRect();
+        // Trigger active when section top is within top 40% of viewport
+        if (rect.top <= window.innerHeight * 0.4) {
+          current = s.id;
+        }
+      });
+
+      // Fallback: if at the bottom of the page, set active to the last section
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+        current = 'contact';
+      }
+
+      if (current) setActive(current);
+    };
+
     window.addEventListener('scroll', onScroll);
+    onScroll(); // Initial check
+
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close menu on resize
   useEffect(() => {
     const onResize = () => { if (window.innerWidth > 900) setMenuOpen(false); };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
-  }, []);
-
-  // Intersection observer for active link
-  useEffect(() => {
-    const sections = document.querySelectorAll('section[id]');
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
-      },
-      { threshold: 0.4 }
-    );
-    sections.forEach(s => obs.observe(s));
-    return () => obs.disconnect();
   }, []);
 
   const close = () => setMenuOpen(false);

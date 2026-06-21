@@ -223,12 +223,16 @@
 [data-theme="light"] .hero-avatar-dark { display: none; }
 [data-theme="light"] .hero-avatar-light { 
   display: block; 
-  mix-blend-mode: multiply; 
   /* Boost brightness slightly so the AI's near-white background becomes pure white and vanishes */
   filter: brightness(1.05) contrast(1.05);
   /* Smooth out the edges perfectly into the background */
   -webkit-mask-image: radial-gradient(circle at center, black 65%, transparent 100%);
   mask-image: radial-gradient(circle at center, black 65%, transparent 100%);
+}
+
+/* Fix mobile safari blend bug and framer-motion stacking context bug */
+[data-theme="light"] .hero-visual {
+  mix-blend-mode: darken;
 }
 
 @keyframes floatAvatar {
