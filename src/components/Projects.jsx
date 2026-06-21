@@ -10,9 +10,9 @@ const projects = [
     title: 'Lybros E-Commerce',
     sub: 'A Toronto based e-commerce platform',
     img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-    tags: ['EJS', 'Node.js', 'MongoDB', 'Tailwind'],
-    link: 'https://www.lb-lybros.shop/',
-    github: null,
+    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind'],
+    link: null,
+    github: 'https://github.com/Muhammd-hafeef-th/Lb-ecommerce.git',
   },
   {
     id: 2,
