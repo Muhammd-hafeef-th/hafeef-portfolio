@@ -190,48 +190,51 @@
 /* ── RIGHT VISUAL ────────────────────────────────────────── */
 .hero-visual {
   flex-shrink: 0;
-  width: 300px;
+  width: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-.hero-img-ring {
+.hero-avatar-container {
   position: relative;
-  width: 240px;
-  height: 270px;
-}
-
-/* Ring decoration */
-.hero-img-ring::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 22px;
-  border: 2px dashed rgba(232,96,28,0.3);
-  animation: spin3d 20s linear infinite;
-}
-
-.hero-img-wrap {
   width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 2px solid var(--orange-border);
-  box-shadow: 0 0 0 6px var(--orange-soft), var(--shadow-card);
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.hero-img {
+.hero-3d-avatar {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.6s ease;
+  max-width: 340px;
+  height: auto;
+  object-fit: contain;
+  animation: floatAvatar 6s ease-in-out infinite;
 }
 
-.hero-img-ring:hover .hero-img { transform: scale(1.04); }
+/* Theme Switching for Avatar */
+[data-theme="dark"] .hero-avatar-light { display: none; }
+[data-theme="dark"] .hero-avatar-dark { 
+  display: block; 
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); /* Perfect for the transparent dark image */
+}
+
+[data-theme="light"] .hero-avatar-dark { display: none; }
+[data-theme="light"] .hero-avatar-light { 
+  display: block; 
+  mix-blend-mode: multiply; 
+  /* Boost brightness slightly so the AI's near-white background becomes pure white and vanishes */
+  filter: brightness(1.05) contrast(1.05);
+  /* Smooth out the edges perfectly into the background */
+  -webkit-mask-image: radial-gradient(circle at center, black 65%, transparent 100%);
+  mask-image: radial-gradient(circle at center, black 65%, transparent 100%);
+}
+
+@keyframes floatAvatar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
 
 /* Available badge */
 .hero-badge {
@@ -320,7 +323,7 @@
   .hero-social-bar::before,
   .hero-social-bar::after { width: 100%; height: 1px; min-height: unset; flex: 1; }
   .hero-visual { width: 100%; margin-top: 2.5rem; }
-  .hero-img-ring { width: 200px; height: 230px; margin: 0 auto; }
+  .hero-avatar-container { width: 260px; margin: 0 auto; }
   .hero-content { padding-right: 0; }
 }
 
@@ -336,5 +339,12 @@
 
 @media (max-width: 480px) {
   .hero-btns { flex-direction: column; align-items: flex-start; }
-  .hero-img-ring { width: 170px; height: 200px; }
+  .hero-avatar-container { width: 200px; }
+  .hero-stats { 
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.25rem; 
+  }
+  .stat-num { font-size: 1rem; }
+  .stat-lbl { font-size: 0.55rem; }
 }

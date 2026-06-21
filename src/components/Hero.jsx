@@ -112,7 +112,7 @@ const Hero = () => {
 
             <motion.div className="hero-stats" {...fadeUp(0.7)}>
               <div>
-                <div className="stat-num">10+</div>
+                <div className="stat-num">20+</div>
                 <div className="stat-lbl">Projects Delivered</div>
               </div>
               <div className="stat-divider" />
@@ -135,18 +135,49 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="hero-img-ring">
-              <div className="hero-img-wrap">
-                <img
-                  src="/ProfileImages/WSFG8803.JPG"
-                  alt="Muhammad Hafeef T H"
-                  className="hero-img"
+            <div className="hero-avatar-container">
+              <img
+                src="/hero_3d_avatar_transparent.png"
+                alt="3D Developer Avatar (Dark)"
+                className="hero-3d-avatar hero-avatar-dark"
+              />
+              <img
+                src="/hero_avatar_light.png"
+                alt="3D Developer Avatar (Light)"
+                className="hero-3d-avatar hero-avatar-light"
+              />
+              <motion.div 
+                className="hero-badge"
+                initial={{ opacity: 0, y: 20, x: "-50%", scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, x: "-50%", scale: 1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.8 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(255, 107, 107, 0.15)" }}
+                style={{ overflow: "hidden", minWidth: "180px", display: "flex", justifyContent: "center" }}
+              >
+                <motion.span 
+                  className="badge-dot" 
+                  animate={{ scale: [1, 1.4, 1], opacity: [1, 0.4, 1] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                  style={{ marginRight: "8px" }}
                 />
-              </div>
-              <div className="hero-badge">
-                <span className="badge-dot" />
-                Available for Freelance
-              </div>
+                
+                <div style={{ position: "relative", height: "18px", width: "160px", overflow: "hidden" }}>
+                  <motion.div
+                    animate={{ y: ["0px", "-18px", "-36px"] }}
+                    transition={{ 
+                      duration: 6, 
+                      repeat: Infinity, 
+                      ease: "anticipate",
+                      times: [0, 0.45, 0.9]
+                    }}
+                    style={{ position: "absolute", top: 0, left: 0, width: "100%", display: "flex", flexDirection: "column" }}
+                  >
+                    <span style={{ height: "18px", lineHeight: "18px", display: "block", textAlign: "left", whiteSpace: "nowrap" }}>Available for Freelance</span>
+                    <span style={{ height: "18px", lineHeight: "18px", display: "block", textAlign: "left", whiteSpace: "nowrap" }}>Open to Opportunities</span>
+                    <span style={{ height: "18px", lineHeight: "18px", display: "block", textAlign: "left", whiteSpace: "nowrap" }}>Available for Freelance</span>
+                  </motion.div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
 

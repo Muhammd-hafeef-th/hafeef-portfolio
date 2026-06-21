@@ -41,7 +41,9 @@ const Contact = () => {
   return (
     <section id="contact" className="section contact">
       <div className="container">
-        <motion.div {...inView(0)} style={{ marginBottom: '2.5rem' }}>
+        
+        {/* ADDED contact-header-centered to center the heading, subheading, and description */}
+        <motion.div className="contact-header-centered" {...inView(0)} style={{ marginBottom: '4rem' }}>
           <span className="section-label">Contact</span>
           <h2 className="section-title">Get a <span className="o">Quote</span></h2>
           <p className="section-sub">Have a project idea? Let's talk and bring it to life together.</p>

@@ -1,101 +1,230 @@
-/* ─── EXPERIENCE ─────────────────────────────────────────── */
-.experience { position: relative; }
-
-.exp-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  margin-top: 2.5rem;
-}
-
-.exp-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 2rem;
+/* ─── EXPERIENCE SECTION (ANIMATED STICKY STACK) ────────────────────────── */
+.experience-animated {
   position: relative;
-  overflow: hidden;
-  transition: all var(--tr);
-  cursor: default;
+  background: var(--bg);
+  padding: 4rem 0 1rem 0; /* Reduced padding to cut gap */
 }
 
-/* Orange top accent */
-.exp-card::before {
+.exp-header-centered {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exp-header-centered .section-label {
+  margin-bottom: 1rem;
+}
+
+.exp-header-centered .section-label::before,
+.exp-header-centered .section-label::after {
   content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
+  display: block;
+  width: 30px;
   height: 2px;
   background: var(--orange);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-  border-radius: 0 0 2px 2px;
+  border-radius: 2px;
 }
 
-.exp-card:hover {
-  border-color: var(--orange-border);
-  box-shadow: 0 0 0 1px var(--orange-border), var(--shadow-card);
-  transform: translateY(-5px);
+.exp-header-centered .section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
 }
 
-.exp-card:hover::before { transform: scaleX(1); }
+.section-sub {
+  font-size: 1.1rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
 
-/* Ghost number */
+/* ─── STACKING CARDS ─────────────────────────────────────────────────────── */
+
+.cards-scroll-container {
+  /* Removed excessive padding-bottom to close the gap */
+  padding-bottom: 0;
+  margin-top: 4rem;
+}
+
+.card-wrapper {
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* top is set inline dynamically in JSX */
+  margin-bottom: 10vh; /* Spacing between cards when scrolling naturally */
+}
+
+.card-wrapper:last-child {
+  margin-bottom: 0; /* Removes the massive gap after the final card sticks */
+}
+
+.card-motion-container {
+  width: 100%;
+  max-width: 900px;
+  transform-origin: top center; /* Scale down towards the top */
+}
+
+.exp-animated-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--card-accent, var(--orange));
+  border-radius: 1.5rem;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  /* 3D perspective setup handled in JSX transformStyle */
+}
+
+.exp-animated-card:hover {
+  border-color: var(--card-accent, var(--orange));
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+/* Interactive Cursor Glow */
+.card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, var(--card-accent, var(--orange)) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.exp-animated-card:hover .card-glow {
+  opacity: 0.15;
+}
+
+/* Card Content Layout */
+.card-content-layout {
+  position: relative;
+  z-index: 1; /* Above the glow */
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.card-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: var(--bg);
+  border: 2px solid; /* color inherited from inline style */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
+}
+
 .exp-ghost-num {
   position: absolute;
-  bottom: -10px;
-  right: 1rem;
+  right: -2rem;
+  top: -2rem;
   font-family: 'Syne', sans-serif;
-  font-size: 5rem;
+  font-size: 8rem;
   font-weight: 900;
-  color: rgba(255,255,255,0.025);
+  color: rgba(255,255,255,0.03);
   line-height: 1;
   pointer-events: none;
   user-select: none;
+  z-index: 1;
 }
 
 [data-theme="light"] .exp-ghost-num {
   color: rgba(0,0,0,0.04);
 }
 
-/* Icon bubble */
-.exp-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: var(--orange-soft);
-  border: 1px solid var(--orange-border);
-  color: var(--orange);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  transition: all var(--tr);
-}
-
-.exp-card:hover .exp-icon {
-  background: var(--orange);
-  color: #fff;
-  transform: scale(1.08) rotate(-5deg);
+.card-right {
+  flex: 1;
 }
 
 .exp-title {
   font-family: 'Syne', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 800;
   color: var(--text-1);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .exp-desc {
-  font-size: 0.875rem;
+  font-size: 1.1rem;
   color: var(--text-2);
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
-/* Cube decoration */
-.exp-cube { position: absolute; top: 1rem; right: 1rem; opacity: 0.7; }
+/* ─── RESPONSIVENESS ─────────────────────────────────────────────────────── */
 
-@media (max-width: 700px) {
-  .exp-grid { grid-template-columns: 1fr; }
+@media (max-width: 992px) {
+  .exp-animated-card {
+    padding: 2.5rem;
+  }
+  .exp-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-content-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .exp-ghost-num {
+    top: -1rem;
+    right: -3rem;
+    font-size: 6rem;
+  }
+  .exp-animated-card {
+    /* Disable 3D tilt on mobile for better UX */
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-animated-card {
+    padding: 1.5rem;
+  }
+  .exp-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+  .exp-title {
+    font-size: 1.3rem;
+  }
+  .exp-desc {
+    font-size: 1rem;
+  }
+  .exp-ghost-num {
+    display: none; /* Hide on very small screens */
+  }
+}
+
+@media (min-width: 1920px) {
+  .card-motion-container {
+    max-width: 1200px;
+  }
+  .exp-animated-card {
+    padding: 4rem;
+  }
+  .exp-title {
+    font-size: 2.5rem;
+  }
+  .exp-desc {
+    font-size: 1.25rem;
+  }
 }

@@ -53,7 +53,7 @@ const Footer = () => {
 
             <div className="footer-bottom">
               <p className="footer-copy">© {year} Muhammad Hafeef T H. All rights reserved.</p>
-              <p className="footer-made">Made with <span className="heart">♥</span> in Kannur, Kerala</p>
+              <p className="footer-made">Designed & Developed by MUHAMMED HAFEEF T H</p>
             </div>
           </div>
         </div>
