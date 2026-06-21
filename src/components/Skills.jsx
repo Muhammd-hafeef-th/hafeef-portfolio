@@ -9,7 +9,7 @@ const allSkills = [
   { n: 'HTML5 / CSS3', e: '🌐' }, { n: 'Node.js', e: '🟢' }, { n: 'FastAPI', e: '⚡' },
   { n: 'Express', e: '🚂' }, { n: 'MongoDB', e: '🍃' }, { n: 'PostgreSQL', e: '🐘' },
   { n: 'Socket.io', e: '🔌' }, { n: 'Git', e: '📦' }, { n: 'Docker', e: '🐳' },
-  { n: 'Vercel', e: '▲' }, { n: 'Figma', e: '🎨' }, { n: 'Postman', e: '📮' },
+  { n: 'Vercel', e: '▲' }, { n: 'Figma', e: '🎨' }, { n: 'Postman', e: '📮' }, { n: 'AWS', e: '☁️' }, { n: 'Stitch', e: '🎨' }
 ];
 
 // duplicate for infinite marquee
@@ -36,7 +36,7 @@ const categories = [
     id: 'tools', cls: 'cat-tools', icon: Wrench, label: 'Tools & Infra',
     skills: [
       { n: 'Git', e: '📦' }, { n: 'Docker', e: '🐳' }, { n: 'Vercel', e: '▲' },
-      { n: 'Postman', e: '📮' }, { n: 'Figma', e: '🎨' }, { n: 'VS Code', e: '💻' },
+      { n: 'Postman', e: '📮' }, { n: 'Figma', e: '🎨' }, { n: 'VS Code', e: '💻' }, { n: 'AWS', e: '☁️' }, { n: 'Stitch', e: '🎨' }
     ],
   },
 ];
