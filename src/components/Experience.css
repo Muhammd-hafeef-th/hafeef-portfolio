@@ -2,7 +2,7 @@
 .experience-animated {
   position: relative;
   background: var(--bg);
-  padding: 4rem 0 1rem 0; /* Reduced padding to cut gap */
+  padding: 6rem 0 2rem 0; /* Reduced padding to cut gap */
 }
 
 .exp-header-centered {
