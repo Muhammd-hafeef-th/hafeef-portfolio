@@ -140,7 +140,6 @@ const Projects = () => {
                 {/* Typography Half */}
                 <div className="showcase-content">
 
-
                   <motion.h3
                     className="showcase-title"
                     initial={{ opacity: 0, y: 30 }}

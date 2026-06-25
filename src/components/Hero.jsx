@@ -58,7 +58,7 @@ const Hero = () => {
               <FaGithub size={15} />
             </motion.a>
             <motion.a
-              href="https://www.linkedin.com/in/hafeef-th-860487315"
+              href="https://www.linkedin.com/in/muhammad-hafeef-th-860487315"
               target="_blank" rel="noopener noreferrer"
               className="hero-social-icon"
               {...fadeUp(0.8)} whileHover={{ scale: 1.15 }} aria-label="LinkedIn"
@@ -146,7 +146,7 @@ const Hero = () => {
                 alt="3D Developer Avatar (Light)"
                 className="hero-3d-avatar hero-avatar-light"
               />
-              <motion.div 
+              <motion.div
                 className="hero-badge"
                 initial={{ opacity: 0, y: 20, x: "-50%", scale: 0.8 }}
                 animate={{ opacity: 1, y: 0, x: "-50%", scale: 1 }}
@@ -154,19 +154,19 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(255, 107, 107, 0.15)" }}
                 style={{ overflow: "hidden", minWidth: "180px", display: "flex", justifyContent: "center" }}
               >
-                <motion.span 
-                  className="badge-dot" 
+                <motion.span
+                  className="badge-dot"
                   animate={{ scale: [1, 1.4, 1], opacity: [1, 0.4, 1] }}
                   transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                   style={{ marginRight: "8px" }}
                 />
-                
+
                 <div style={{ position: "relative", height: "18px", width: "160px", overflow: "hidden" }}>
                   <motion.div
                     animate={{ y: ["0px", "-18px", "-36px"] }}
-                    transition={{ 
-                      duration: 6, 
-                      repeat: Infinity, 
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
                       ease: "anticipate",
                       times: [0, 0.45, 0.9]
                     }}

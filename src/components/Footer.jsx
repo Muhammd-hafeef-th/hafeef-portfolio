@@ -22,7 +22,7 @@ const Footer = () => {
                 </p>
                 <div className="footer-social">
                   <a href="https://github.com/Muhammd-hafeef-th" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="GitHub"><FaGithub size={15} /></a>
-                  <a href="https://www.linkedin.com/in/hafeef-th-860487315" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="LinkedIn"><FaLinkedin size={15} /></a>
+                  <a href="https://www.linkedin.com/in/muhammad-hafeef-th-860487315" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="LinkedIn"><FaLinkedin size={15} /></a>
                   <a href="https://www.instagram.com/hafeeff?igsh=MTRobHIwdHZwb3FjYQ==" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="Instagram"><FaInstagram size={15} /></a>
                 </div>
               </div>
@@ -44,7 +44,7 @@ const Footer = () => {
                 <div className="footer-col-title">Connect</div>
                 <div className="footer-links">
                   <a href="https://github.com/Muhammd-hafeef-th" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a>
-                  <a href="https://www.linkedin.com/in/hafeef-th-860487315" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/muhammad-hafeef-th-860487315" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a>
                   <a href="https://www.instagram.com/hafeeff?igsh=MTRobHIwdHZwb3FjYQ==" target="_blank" rel="noopener noreferrer" className="footer-link">Instagram</a>
                   <a href="mailto:thhafeef2@gmail.com" className="footer-link">Email</a>
                 </div>

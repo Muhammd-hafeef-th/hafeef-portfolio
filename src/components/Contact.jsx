@@ -6,7 +6,7 @@ import './Contact.css';
 
 const Cube = ({ cls = '', sizeCls = 'cube-sm', delay = 'd3' }) => (
   <div className={`cube-deco ${sizeCls} cube-${delay} contact-cube ${cls}`}>
-    {['front','back','left','right','top','bottom'].map(f => <div key={f} className={`face ${f}`} />)}
+    {['front', 'back', 'left', 'right', 'top', 'bottom'].map(f => <div key={f} className={`face ${f}`} />)}
   </div>
 );
 
@@ -41,7 +41,7 @@ const Contact = () => {
   return (
     <section id="contact" className="section contact">
       <div className="container">
-        
+
         {/* ADDED contact-header-centered to center the heading, subheading, and description */}
         <motion.div className="contact-header-centered" {...inView(0)} style={{ marginBottom: '4rem' }}>
           <span className="section-label">Contact</span>
@@ -76,7 +76,7 @@ const Contact = () => {
               <a href="https://github.com/Muhammd-hafeef-th" target="_blank" rel="noopener noreferrer" className="ci-social-btn">
                 <FaGithub size={14} /> GitHub
               </a>
-              <a href="https://www.linkedin.com/in/hafeef-th-860487315" target="_blank" rel="noopener noreferrer" className="ci-social-btn">
+              <a href="https://www.linkedin.com/in/muhammad-hafeef-th-860487315" target="_blank" rel="noopener noreferrer" className="ci-social-btn">
                 <FaLinkedin size={14} /> LinkedIn
               </a>
               <a href="https://www.instagram.com/hafeeff?igsh=MTRobHIwdHZwb3FjYQ==" target="_blank" rel="noopener noreferrer" className="ci-social-btn">
@@ -112,7 +112,7 @@ const Contact = () => {
 
               {status === 'loading' && <div className="status-msg loading">Sending...</div>}
               {status === 'success' && <div className="status-msg success">✓ Message sent! I'll reply soon.</div>}
-              {status === 'error'   && <div className="status-msg error">✕ Something went wrong. Try again.</div>}
+              {status === 'error' && <div className="status-msg error">✕ Something went wrong. Try again.</div>}
 
               <button type="submit" className="send-btn" disabled={status === 'loading'}>
                 {status === 'loading' ? 'Sending...' : <><Send size={16} /> Send Message</>}

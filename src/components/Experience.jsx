@@ -89,7 +89,7 @@ const Card = ({ item, i, progress, range, targetScale }) => {
               <div className="exp-icon-wrapper" style={{ color: item.color, borderColor: item.color }}>
                 <item.icon size={32} />
               </div>
-              <div className="exp-ghost-num">0{i + 1}</div>
+
             </div>
 
             <div className="card-right">
